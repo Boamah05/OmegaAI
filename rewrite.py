@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Set OpenAI API key from environment variable
-openai.api_key = os.getenv("OPENAI_API_KEY") or "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 def rewrite_paragraph(paragraph, style="formal"):
     prompt = f"Rewrite the following paragraph in a {style} style:\n\n{paragraph}"
 
@@ -29,6 +29,7 @@ def rewrite_paragraph(paragraph, style="formal"):
         return "An error occurred while trying to rewrite the paragraph."
 
 # Example Usage
-paragraph = "This is an example paragraph that needs improvement."
-rewritten_paragraph = rewrite_paragraph(paragraph, style="professional")
+paragraph = input("Enter a sentence or a paragraph for the OMEGA AI to rewrite: ")
+style = input("What style of writing would you like the OMEGA AI to rewrite for you? There is Casual, Professional, Formal, or Creative. ")
+rewritten_paragraph = rewrite_paragraph(paragraph, style)
 print(rewritten_paragraph)
