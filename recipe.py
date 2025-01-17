@@ -41,7 +41,11 @@ def generate_recipe(ingredients):
         return f"An unexpected error occurred: {e}"
 
 if __name__ == "__main__":
-    ingredients = ["chicken", "garlic", "onion", "olive oil", "lemon"]
+    amount = int(input("How many ingredients do you have? "))
+    ingredients = []
+    for i in range(amount):
+        item = input(f'What is your {i+1}st ingredient? ')
+        ingredients.append(item)
     recipe = generate_recipe(ingredients)
     print("Generated Recipe:\n")
     print(recipe)
