@@ -11,6 +11,16 @@ def initialize_openai():
     if not openai.api_key:
         raise ValueError("OpenAI API key is missing. Please set it in the .env file.")
 
+def determineThTerm(value):
+    if value == 1:
+        return "st"
+    elif value == 2:
+        return "nd"
+    elif value == 3:
+        return "rd"
+    else:
+        return "th"
+
 # Function to generate a recipe using the provided ingredients
 def generate_recipe(ingredients):
     initialize_openai()  # Ensure API key is set
@@ -44,7 +54,7 @@ if __name__ == "__main__":
     amount = int(input("How many ingredients do you have? "))
     ingredients = []
     for i in range(amount):
-        item = input(f'What is your {i+1}st ingredient? ')
+        item = input(f'What is your {i+1}{determineThTerm(i+1)} ingredient? ')
         ingredients.append(item)
     recipe = generate_recipe(ingredients)
     print("Generated Recipe:\n")
